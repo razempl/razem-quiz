@@ -9,15 +9,15 @@ export default fluxApp.createStore('questions', {
   getInitialState() {
     return {
       questions: [],
-      current: undefined,
+      current: void(0),
       answers: {},
     };
   },
 
   onQuestions(payload) {
     const [ questions, current ] = payload;
-    this.setState({ 
-      questions, 
+    this.setState({
+      questions,
       current: parseInt(current)
     });
   },

@@ -12,7 +12,7 @@ export default React.createClass({
 
   statics: {
     load(route, fluxApp) {
-      return fluxApp.getActions('questions').get(route.params.id)
+      return fluxApp.getActions('questions').get(route.params.id);
     }
   },
 
@@ -32,7 +32,7 @@ export default React.createClass({
     this.setData();
   },
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(newprops) {
     this.setData();
   },
 
@@ -66,18 +66,18 @@ export default React.createClass({
   render() {
     const options = R.map(option => {
       return (
-        <Input 
-          type='radio' 
-          name='question' 
-          value={option} 
-          key={option} 
+        <Input
+          type='radio'
+          name='question'
+          value={option}
+          key={option}
           onChange={this.answerChanged}>
             { option }
         </Input>
       );
     }, this.state.options);
 
-    const msg = this.state.currentId < this.state.total - 1 ? 'Następne' : 'Zagłosuj'
+    const msg = this.state.currentId < this.state.total - 1 ? 'Następne' : 'Zagłosuj';
 
     return (
       <Layout>
