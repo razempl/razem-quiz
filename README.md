@@ -4,6 +4,8 @@
 
 You need to have docker and fig installed, then:
 
+    cp dev.env .env
+
     sudo npm install -g foreman mariner
     make init
 

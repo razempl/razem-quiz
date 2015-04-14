@@ -28,5 +28,7 @@ pids
 # the DB file
 db
 
+# Env
+.env
 
 bower_components

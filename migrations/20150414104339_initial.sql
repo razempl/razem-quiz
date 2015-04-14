@@ -5,7 +5,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
 
 CREATE TABLE answers (
   id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
-  answer varchar NOT NULL,
+  answer jsonb NOT NULL,
   created_at timestamp DEFAULT now() NOT NULL
 );
 
