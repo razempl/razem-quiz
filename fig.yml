@@ -1,0 +1,15 @@
+pgdata:
+  image: busybox:latest
+  volumes:
+    - /var/lib/postgresql/data
+ 
+postgres:
+  image: postgres:9.4
+  ports:
+    - "5678:5432"
+  environment:
+    POSTGRES_PASSWORD: razem
+    POSTGRES_USER: razem
+    POSTGRES_DATABASE: razem
+  volumes_from:
+    - pgdata
