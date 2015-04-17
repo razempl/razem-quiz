@@ -27,11 +27,15 @@ start-docker:
 migrate:
 	./.migrate.sh
 
+setup-hooks:
+	./.hooks-setup.sh
+
 init:
 	make install
 	make start-docker
 	make migrate
 	fig stop postgres
+	make setup-hooks
 
 dev: 
 	make install
