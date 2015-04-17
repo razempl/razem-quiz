@@ -1,5 +1,13 @@
 import fluxApp from 'fluxapp';
 import Promise from 'bluebird';
+import R from 'ramda';
+
+function pairToAnswer(pair) {
+  const [question, answer] = pair;
+  return {question, answer};
+}
+
+const toAnswersList = object => R.map(pairToAnswer, R.toPairs(object));
 
 export default fluxApp.createActions('questions', {
   get: (idx) => Promise.all([ fluxApp.fetch({ url: '/api/questions' }), idx ]),
@@ -11,7 +19,7 @@ export default fluxApp.createActions('questions', {
       method: 'POST',
       url: '/api/answer',
       payload: {
-        answers: JSON.stringify(answers)
+        answers: toAnswersList(answers)
       }
     });
   }

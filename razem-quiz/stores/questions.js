@@ -25,8 +25,9 @@ export default fluxApp.createStore('questions', {
   onAnswer(payload) {
     const [ question, answer ] = payload;
     let {answers} = this.state;
+    const currentQuestion = this.state.questions[question].question;
 
-    answers[question] = answer;
+    answers[currentQuestion] = answer;
     this.setState({ answers });
   },
 });

@@ -16,7 +16,12 @@ export default (hapi) => {
       handler: require('./answer'),
       validate: {
         payload: Joi.object().keys({
-          answers: Joi.string()
+          answers: Joi.array().includes(
+            Joi.object().keys({
+              question: Joi.string(),
+              answer: Joi.string()
+            })
+          )
         })
       }
     }

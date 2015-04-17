@@ -1,11 +1,11 @@
 import Bookshelf from 'bookshelf';
+import Promise from 'bluebird';
+
 const {knex} = Bookshelf.PG;
 
 export default (request, reply) => {
   const {answers} = request.payload;
 
-  return knex('answers')
-    .returning('id')
-    .insert({ answer: answers })
+  return Promise.map(request.payload.answers, answer => knex('answers').insert(answer))
     .nodeify(reply);
 }
